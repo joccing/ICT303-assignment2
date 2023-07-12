@@ -25,7 +25,7 @@ def config_data(base_path, zipfiles):
         full_path = os.path.join(base_path, filename)
 
         # Derive the name of the expected output directory
-        expected_dir = os.path.join(base_path, filename.split('.')[0]) 
+        expected_output = os.path.join(base_path, filename.split('.')[0]) 
         if filename.endswith(".zip") and not filename.endswith(".csv.zip"):
             expected_output += "/"
 
