@@ -1,17 +1,10 @@
 import sys
 import zipfile
 import os
-import importlib
+import importfile
 
-def install_package(package):
-    try:
-        importlib.import_module(package)
-    except ImportError:
-        import sys
-        !{sys.executable} -m pip install {package}
-
-def get_file_path(filename):
-      full_path = F"{BASE_PATH}{filename}"
+def get_file_path(base_path,filename):
+      full_path = F"{base_path}{filename}"
       return full_path
 
 try:
@@ -35,11 +28,11 @@ def config_data(base_path, zipfiles):
                 print(f'{filename} is a valid zip file')
                 
                 # automatically unzip valid zip files
-                with zipfile.ZipFile(get_file_path(filename), 'r') as z:
+                with zipfile.ZipFile(get_file_path(base_path,filename), 'r') as z:
                   # Create a progress bar
                       with tqdm(total=len(z.namelist())) as pbar:
                           for file in z.namelist():
-                              z.extract(member=file, path=BASE_PATH)
+                              z.extract(member=file, path=base_path)
                               # Update the progress bar
                               pbar.update()
             else:
