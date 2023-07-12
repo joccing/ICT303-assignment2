@@ -54,10 +54,10 @@ def config_data(base_path, zipfiles):
                                     pbar.update()
             else:
                 print(f'{filename} is not a valid zip file')
-                return 0
+                return False
         else:
             print(f'{filename} does not exist')
-            return 0
+            return False
 
     print('\nFinished!')
-    return 1
+    return True
