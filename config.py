@@ -25,6 +25,8 @@ def config_data(base_path, zipfiles):
 
         # Derive the name of the expected output directory
         expected_dir = os.path.join(base_path, filename.split('.')[0]) 
+        if filename.endswith(".zip") and not filename.endswith(".csv.zip"):
+            expected_output += "/"
 
         # If the expected directory already exists, skip extraction
         if os.path.isdir(expected_dir):
@@ -42,11 +44,13 @@ def config_data(base_path, zipfiles):
                 # automatically unzip valid zip files
                 with zipfile.ZipFile(get_file_path(base_path,filename), 'r') as z:
                   # Create a progress bar
-                      with tqdm(total=len(z.namelist())) as pbar:
-                          for file in z.namelist():
-                              z.extract(member=file, path=base_path)
-                              # Update the progress bar
-                              pbar.update()
+                    with tqdm(total=len(z.namelist())) as pbar:
+                            for file in z.namelist():
+                                # Skip any "__MACOSX" files or directories
+                                if "__MACOSX" not in file:
+                                    z.extract(member=file, path=base_path)
+                                    # Update the progress bar
+                                    pbar.update()
             else:
                 print(f'{filename} is not a valid zip file')
         else:
