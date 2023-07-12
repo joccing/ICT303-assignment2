@@ -47,15 +47,17 @@ def config_data(base_path, zipfiles):
                   # Create a progress bar
                     with tqdm(total=len(z.namelist())) as pbar:
                             for file in z.namelist():
-                                z.extract(member=file, path=base_path)
-                                # Update the progress bar
-                                pbar.update()
+                                # Skip any "__MACOSX" files or directories
+                                if "__MACOSX" not in file:
+                                    z.extract(member=file, path=base_path)
+                                    # Update the progress bar
+                                    pbar.update()
             else:
                 print(f'{filename} is not a valid zip file')
                 return 0
         else:
             print(f'{filename} does not exist')
             return 0
-            
+
     print('\nFinished!')
     return 1
