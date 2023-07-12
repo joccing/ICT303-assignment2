@@ -1,7 +1,14 @@
 import sys
 import zipfile
 import os
-import importfile
+import importlib
+
+def install_package(package):
+    try:
+        importlib.import_module(package)
+    except ImportError:
+        import sys
+        !{sys.executable} -m pip install {package}
 
 def get_file_path(base_path,filename):
       full_path = F"{base_path}{filename}"
