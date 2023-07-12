@@ -22,7 +22,15 @@ def config_data(base_path, zipfiles):
 
     for filename in zipfiles:
         full_path = os.path.join(base_path, filename)
-        
+
+        # Derive the name of the expected output directory
+        expected_dir = os.path.join(base_path, filename.split('.')[0]) 
+
+        # If the expected directory already exists, skip extraction
+        if os.path.isdir(expected_dir):
+            print(f'Output directory for {filename} already exists. Skipping extraction...')
+            continue
+
         # Check if the file exists
         if os.path.exists(full_path):
             print(f'{filename} exists')
@@ -43,3 +51,4 @@ def config_data(base_path, zipfiles):
                 print(f'{filename} is not a valid zip file')
         else:
             print(f'{filename} does not exist')
+    print('Finished!')
