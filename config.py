@@ -1,7 +1,7 @@
 import sys
 import zipfile
-import importlib
 import os
+import importlib
 
 def install_package(package):
     try:
