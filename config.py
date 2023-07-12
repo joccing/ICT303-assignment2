@@ -30,7 +30,7 @@ def config_data(base_path, zipfiles):
             expected_output += "/"
 
         # If the expected directory already exists, skip extraction
-        if os.path.isdir(expected_dir):
+        if os.path.isdir(expected_output):
             print(f'Output directory for {filename} already exists. Skipping extraction...')
             continue
 
