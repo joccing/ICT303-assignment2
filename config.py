@@ -20,6 +20,7 @@ except ImportError:
 
 def config_data(base_path, zipfiles):
 
+    print(f'Folder: {base_path}')
     for filename in zipfiles:
         full_path = os.path.join(base_path, filename)
 
