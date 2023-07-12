@@ -21,6 +21,7 @@ except ImportError:
 def config_data(base_path, zipfiles):
 
     print(f'Folder: {base_path}')
+    total = 0
     for filename in zipfiles:
         full_path = os.path.join(base_path, filename)
 
@@ -52,12 +53,13 @@ def config_data(base_path, zipfiles):
                                     z.extract(member=file, path=base_path)
                                     # Update the progress bar
                                     pbar.update()
+                                    total += 1
             else:
                 print(f'{filename} is not a valid zip file')
-                return False
+                return total
         else:
             print(f'{filename} does not exist')
-            return False
+            return total
 
     print('\nFinished!')
-    return True
+    return total
