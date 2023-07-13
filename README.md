@@ -20,7 +20,7 @@ try:
   if is_running_in_colab():
     print("Running in Google Colab")
     from google.colab import drive
-    drive.mount('/content/gdrive')
+    drive.mount('/content/gdrive',force_remount=True)
   else:
     print("Running in Jupyter or VSCode")
 
