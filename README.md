@@ -26,7 +26,13 @@ try:
 
   import requests
   url = 'https://raw.githubusercontent.com/joccing/ICT303-assignment2/master/config.py'
-  r = requests.get(url, allow_redirects=True)
+
+  headers = {
+    'Cache-Control': 'no-cache',
+    'Pragma': 'no-cache',
+    }
+    
+  r = requests.get(url, allow_redirects=True, headers=headers)
   open('config.py', 'wb').write(r.content)
 
 except ModuleNotFoundError:
@@ -34,7 +40,6 @@ except ModuleNotFoundError:
 
 # PLEASE MODIFY BASE PATH
 BASE_PATH = F"/content/gdrive/My Drive/path/to/your/assignment/"
-
 # Name of zip files
 zipfiles = ['dog-breed-identification.zip']
 
