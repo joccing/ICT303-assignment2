@@ -41,7 +41,7 @@ zipfiles = ['dog-breed-identification.zip']
 from config import *
 DOWNLOADED = config_data(BASE_PATH,zipfiles, ['train','test','labels.csv'])
 assert DOWNLOADED == 20581 or DOWNLOADED < 0
-assert check_files_and_dirs(BASE_PATH, ['train','test','labels.csv']) == True
+assert check_all(BASE_PATH, ['train','test','labels.csv']) == True
 ```
 
 4. Modify the Base Path in the code above and execute the cell using *Shift-Return*.  It should start expanding the zip file. 
