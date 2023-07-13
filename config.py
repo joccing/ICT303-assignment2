@@ -4,19 +4,19 @@ import os
 import importlib
 import subprocess
 
-def install_package(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-def get_file_path(base_path,filename):
-      full_path = F"{base_path}{filename}"
-      return full_path
-
 try:
     from tqdm import tqdm
 except ImportError:
     # If tqdm is not installed, install it
     install_package('tqdm')
     from tqdm import tqdm
+
+def install_package(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+def get_file_path(base_path,filename):
+    full_path = F"{base_path}{filename}"
+    return full_path
 
 def check_all(path, expected_names):
     # Get the actual names of all files and directories in the path
@@ -25,7 +25,6 @@ def check_all(path, expected_names):
     mapped = list(map(lambda x: x in actual_names, expected_names))    
     # Check if all the expected names were found
     return len(mapped) == len(expected_names) and all(mapped)
-
 
 def config_data(base_path, zipfiles, expected_names=[]):
 
