@@ -5,7 +5,7 @@ This code allows you to uncompress the training and test data for **Assignment 2
 
 Start by
 1. Going to the [kaggle site](https://www.kaggle.com/c/dog-breed-identification/data) and download the zip file.
-2. Upload the *dog-breed-identification.zip* file to a folder in Google drive, say **/content/gdrive/My Drive/path/to/your/assignment/**
+2. Upload the *dog-breed-identification.zip* file to a folder in Google drive, say **/content/gdrive/My Drive/path/to/your/assignment/kaggle_dog**
 3. Create a cell at the beginning of your **Colab/Jupyter/VSCode/** notebook, and copy and paste this code there:
 
 ```python
