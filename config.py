@@ -63,6 +63,7 @@ def config_data(base_path, zipfiles, expected_names=[]):
                 with zipfile.ZipFile(get_file_path(base_path,filename), 'r') as z:
                   # Create a progress bar
                     with tqdm(total=len(z.namelist())) as pbar:
+                            print('\n')
                             for file in z.namelist():
                                 # Skip any "__MACOSX" files or directories
                                 if "__MACOSX" not in file:
