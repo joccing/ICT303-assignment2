@@ -32,7 +32,7 @@ def config_data(base_path, zipfiles, expected_names=[]):
     print(f'Folder: {base_path}')
     total = 0
 
-    if expected_names and check_files_and_dirs(base_path, expected_names):
+    if expected_names and check_all(base_path, expected_names):
         print(f'Files expected already exist. Skipping extraction...')
         return -1 # signify that all seems fine even though none are extracted
 
