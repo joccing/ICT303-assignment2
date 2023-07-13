@@ -18,6 +18,17 @@ except ImportError:
     install_package('tqdm')
     from tqdm import tqdm
 
+def check_files_and_dirs(path, expected_names):
+    # Get the actual names of all files and directories in the path
+    actual_names = os.listdir(path)
+
+    # Check each expected name
+    for name in expected_names:
+        if name not in actual_names:
+            print(f'Not found: {name}')
+            return False
+    return True
+
 def config_data(base_path, zipfiles):
 
     print(f'Folder: {base_path}')
