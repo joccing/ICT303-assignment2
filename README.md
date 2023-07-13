@@ -9,6 +9,8 @@ Start by
 3. Create a cell at the beginning of your **Colab/Jupyter/VSCode/** notebook, and copy and paste this code there:
 
 ```python
+import importlib
+
 def is_running_in_colab():
     try:
         from google.colab import _ipython as ip
