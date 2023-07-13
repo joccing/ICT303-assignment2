@@ -66,6 +66,7 @@ def config_data(base_path, zipfiles, expected_names=[]):
                             for file in z.namelist():
                                 # Skip any "__MACOSX" files or directories
                                 if "__MACOSX" not in file:
+                                    print(f'Extracting: {file}')
                                     z.extract(member=file, path=base_path)
                                     # Update the progress bar
                                     pbar.update()
