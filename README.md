@@ -62,9 +62,9 @@ they are two separate systems and what you see on Google Colab may not be what y
 will take some time to sync.  **If** you happen to close your Google Colab notebook before this syncing is complete, *all* the files
 in progress of being synced will end up in your Google Drive bin.
 
-If you want to force the sync, you can run the code below in another cell, but this takes very very long (given we have 20k+ files, all 
-traveling through the internet).  There seems to be no way to track its progress as of this time as Google Colab and Google Drive are two 
-separate independent systems.
+If you want to force the sync, you can run the code below in another cell, but this takes **very very** long (given we have 20k+ files, all 
+traveling through the internet).  On my laptop, it took **around 1.5 hours**.  There seems to be no way to track its progress as of this time as 
+Google Colab and Google Drive are two separate independent systems.
 
 ```python
 if is_running_in_colab():
