@@ -40,9 +40,9 @@ try:
 except ModuleNotFoundError:
   pass
 
-# PLEASE MODIFY BASE PATH
-BASE_PATH = F"/content/gdrive/My Drive/path/to/your/assignment/"
-# Name of zip files
+# PLEASE MODIFY BASE PATH, call the folder 'kaggle_dog' as below
+BASE_PATH = F"/content/gdrive/My Drive/path/to/your/assignment/kaggle_dog/"
+# Name of zip files that you put into the path above
 zipfiles = ['dog-breed-identification.zip']
 
 from config import *
@@ -55,3 +55,21 @@ assert check_all(BASE_PATH, ['train','test','labels.csv']) == True
 ```
 
 4. Modify the Base Path in the code above and execute the cell using *Shift-Return*.  It should start expanding the zip file. 
+
+**IMPORTANT**
+The above steps will uncompress the data into your Google Colab mounted version of your Google Drive folder.  I say 'version' because
+they are two separate systems and what you see on Google Colab may not be what you see on Google Drive.  For large amount of files, this
+will take some time to sync.  **If** you happen to close your Google Colab notebook before this syncing is complete, *all* the files
+in progress of being synced will end up in your Google Drive bin.
+
+If you want to force the sync, you can run the code below in another cell, but this takes very very long (given we have 20k+ files, all 
+traveling through the internet).  There seems to be no way to track its progress as of this time as Google Colab and Google Drive are two 
+separate independent systems.
+
+```python
+if is_running_in_colab():
+    print('Syncing Google Colab and Google Drive..')
+    from google.colab import drive
+    drive.flush_and_unmount()
+    print('Done.')
+```
